@@ -6,7 +6,8 @@ from mushroom.entity.artifact_entity import DataIngestionArtifact
 #import zipfile
 from zipfile import ZipFile
 import numpy as np
-from six.moves import urllib
+#from six.moves import urllib
+from six import urllib
 import pandas as pd
 from sklearn.model_selection import StratifiedShuffleSplit
 from mushroom.constant import *

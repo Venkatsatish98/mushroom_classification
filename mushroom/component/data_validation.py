@@ -11,6 +11,7 @@ from evidently.model_profile.sections import DataDriftProfileSection
 from evidently.dashboard import Dashboard
 from evidently.dashboard.tabs import DataDriftTab
 import json
+from mushroom.util.util import read_yaml_file
 
 class DataValidation:
     
@@ -30,6 +31,7 @@ class DataValidation:
             train_df = pd.read_csv(self.data_ingestion_artifact.train_file_path)
             test_df = pd.read_csv(self.data_ingestion_artifact.test_file_path)
             return train_df,test_df
+
         except Exception as e:
             raise MushroomException(e,sys) from e
 
@@ -76,9 +78,24 @@ class DataValidation:
             # NEAR OCEAN
             #3. Check column names
 
+            schema_file_path=self.data_validation_config.schema_file_path
+            schema_data=read_yaml_file(file_path=schema_file_path)
+            schema_columns=schema_data['columns']
+            schema_datatype_dataframe=pd.DataFrame.from_dict(schema_columns,orient='index')
 
-            validation_status = True
+            train_file_path=self.data_ingestion_artifact.train_file_path
+            train_df=pd.read_csv(train_file_path)
+
+            train_datatype_dataframe=pd.DataFrame(train_df.dtypes)
+
+            if schema_datatype_dataframe.equals(train_datatype_dataframe):
+                validation_status=True
+                logging.info("Data columns and datatype validation completed")
+            else:
+                logging.info("Data validation faliure : data type not same or columns name mismatch")
+
             return validation_status 
+
         except Exception as e:
             raise MushroomException(e,sys) from e
 
@@ -99,6 +116,7 @@ class DataValidation:
             with open(report_file_path,"w") as report_file:
                 json.dump(report, report_file, indent=6)
             return report
+
         except Exception as e:
             raise MushroomException(e,sys) from e
 
@@ -113,6 +131,7 @@ class DataValidation:
             os.makedirs(report_page_dir,exist_ok=True)
 
             dashboard.save(report_page_file_path)
+
         except Exception as e:
             raise MushroomException(e,sys) from e
 
@@ -121,6 +140,7 @@ class DataValidation:
             report = self.get_and_save_data_drift_report()
             self.save_data_drift_report_page()
             return True
+            
         except Exception as e:
             raise MushroomException(e,sys) from e
 
@@ -139,6 +159,7 @@ class DataValidation:
             )
             logging.info(f"Data validation artifact: {data_validation_artifact}")
             return data_validation_artifact
+            
         except Exception as e:
             raise MushroomException(e,sys) from e
 
