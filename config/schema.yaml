@@ -1,0 +1,234 @@
+columns:
+  class: object
+  cap-shape: object
+  cap-surface: object
+  cap-color: object
+  bruises: object
+  odor: object
+  gill-attachment: object
+  gill-spacing: object
+  gill-size: object
+  gill-color: object
+  stalk-shape: object
+  stalk-root: object
+  stalk-surface-above-ring: object
+  stalk-surface-below-ring: object
+  stalk-color-above-ring: object
+  stalk-color-below-ring: object
+  veil-type: object
+  veil-color: object
+  ring-number: object
+  ring-type: object
+  spore-print-color: object
+  population: object
+  habitat: object
+
+
+
+'''
+numerical_columns:
+  - longitude
+  - latitude
+  - housing_median_age
+  - total_rooms
+  - total_bedrooms
+  - population
+  - households
+  - median_income
+'''
+
+
+categorical_columns:
+  - cap-shape
+  - cap-surface
+  - cap-color
+  - bruises
+  - odor
+  - gill-attachment
+  - gill-spacing
+  - gill-size
+  - gill-color
+  - stalk-shape
+  - stalk-root
+  - stalk-surface-above-ring
+  - stalk-surface-below-ring
+  - stalk-color-above-ring
+  - stalk-color-below-ring
+  - veil-type
+  - veil-color
+  - ring-number
+  - ring-type
+  - spore-print-color
+  - population
+  - habitat
+
+
+
+
+
+target_column: class
+
+domain_value:
+  class:
+    - p
+    - e
+  cap-shape:
+    - x
+    - b
+    - s
+    - f
+    - k
+    - c
+  cap-surface:
+    - s
+    - y
+    - f
+    - g
+
+  cap-color:
+    - n
+    - y
+    - w
+    - g
+    - e
+    - p
+    - b
+    - u
+    - c
+    - r
+
+  bruises:
+    - t
+    - f
+
+  odor:
+    - p
+    - a
+    - l
+    - n
+    - f
+    - c
+    - y
+    - s
+    - m
+
+  gill-attachment:
+    - f
+    - a
+
+  gill-spacing:
+    - c
+    - w
+
+  gill-size:
+    - n
+    - b
+
+  gill-color:
+    - k
+    - n
+    - g
+    - p
+    - w
+    - h
+    - u
+    - e
+    - b
+    - r
+    - y
+    - o
+
+  stalk-shape:
+    - e
+    - t
+
+  stalk-root:
+    - e
+    - c
+    - b
+    - r
+    - '?'
+
+  stalk-surface-above-ring:
+    - s
+    - f
+    - k
+    - y
+
+  stalk-surface-below-ring:
+    - s
+    - f
+    - y
+    - k
+
+  stalk-color-above-ring:
+    - w
+    - g
+    - p
+    - n
+    - b
+    - e
+    - o
+    - c
+    - y
+
+  stalk-color-below-ring:
+    - w
+    - p
+    - g
+    - b
+    - n
+    - e
+    - y
+    - o
+    - c
+
+  veil-type:
+    - p
+
+  veil-color:
+    - w
+    - n
+    - o
+    - y
+
+  ring-number:
+    - o
+    - t
+    - n
+
+  ring-type:
+    - p
+    - e
+    - l
+    - f
+    - n
+  
+  spore-print-color:
+    - k
+    - n
+    - u
+    - h
+    - w
+    - r
+    - o
+    - y
+    - b 
+
+  population:
+    - s
+    - n
+    - a
+    - v
+    - y
+    - c
+
+  habitat:
+    - u
+    - g
+    - m
+    - d
+    - p
+    - w
+    - l
+
